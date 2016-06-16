@@ -10,8 +10,13 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var failureMessage: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Register"
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +26,21 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func registerButtonTapped(sender: AnyObject) {
+        
+        let email = emailField.text
+        let password = passwordField.text
+        let (failure, user) = UserController.sharedInstance.registerUser(email!, newPassword: password!)
+        if (user != nil) {
+            print("User registered view registration view")
+            failureMessage.text = ""
+        } else {
+            if (failure != nil) {
+                failureMessage.text = failure
+            }
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

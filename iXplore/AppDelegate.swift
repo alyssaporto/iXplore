@@ -14,7 +14,8 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
-    var navigationController = UINavigationController()
+    var authenticationNavigationController: UINavigationController?
+    var loggedInNavigationController = UINavigationController()
     var locationManager: CLLocationManager?
     var loginStatus:String?
     var allowed: Bool = false
@@ -25,28 +26,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let initialScreenVC = InitialScreenViewController(nibName: "InitialScreenViewController", bundle: nil)
+        authenticationNavigationController = UINavigationController(rootViewController: initialScreenVC)
+        authenticationNavigationController!.navigationBarHidden = false
+
+        let lvc = LandingViewController(nibName: "LandingViewController", bundle: nil)
+        loggedInNavigationController = UINavigationController(rootViewController: lvc)
+        loggedInNavigationController.navigationBarHidden = false
+        
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
         loginStatus = ""
         currentLocation = CLLocation()
         
-        let lvc = LandingViewController(nibName: "LandingViewController", bundle: nil)
-        self.navigationController = UINavigationController(rootViewController: lvc)
-        self.navigationController.navigationBarHidden = false
-        
-        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = self.navigationController
+        self.window?.rootViewController = self.authenticationNavigationController
         return true
+    }
+    
+    func navigateToLoggedInNavigationController() {
+        window?.rootViewController = loggedInNavigationController
+    }
+    
+    func navigateToLogOutNavigationController() {
+        window?.rootViewController = authenticationNavigationController
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = self.locationManager?.location
     }
     
-    func locationManager(manager:CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) { //delegate function
+    func locationManager(manager:CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
         case CLAuthorizationStatus.Restricted:
             loginStatus = "Authorization status restricted"

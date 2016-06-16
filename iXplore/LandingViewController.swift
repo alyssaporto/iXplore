@@ -107,7 +107,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let action2 = UITableViewRowAction(style: .Normal, title: " Delete ") { action, index in
             
-            let alertController = UIAlertController(title: "Are you sure you want to delete \(PlacesController.sharedInstance.placeArray[indexPath.row].title!)?", message: "", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Are you sure you want to delete \(PlacesController.sharedInstance.placeArray[indexPath.row].title!)?", message: "You will no longer be able to access this location if you choose to", preferredStyle: .Alert)
             
             let OKAction = UIAlertAction(title: "Delete", style: .Default) { (action) in
                 self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
@@ -116,17 +116,9 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 PlacesController.sharedInstance.saveArray()
             }
             alertController.addAction(OKAction)
-            
-            //if cancel is pressed
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in }
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true) {}
-            /*
-            print("Delete Button tapped")
-            self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
-            PlacesController.sharedInstance.placeArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            */
         }
         action2.backgroundColor = UIColor.redColor()
         
@@ -149,23 +141,29 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         self.navigationController?.navigationBarHidden = false
+        
         let plusButton : UIBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(LandingViewController.openModal))
         self.navigationItem.rightBarButtonItem = plusButton
+        
+        let logOutButton : UIBarButtonItem = UIBarButtonItem(title: "Log Out", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(LandingViewController.logOutButtonTapped))
+        self.navigationItem.leftBarButtonItem = logOutButton
+        
         PlacesController.sharedInstance.getPlaces()
         setupMapView()
         setupTableView()
         tableView.reloadData()
     }
     
+    func logOutButtonTapped() {
+        appDelegate.navigateToLogOutNavigationController()
+    }
+    
     func openModal() {
         let newPlaceViewController = NewPlaceViewController(nibName: "NewPlaceViewController", bundle: nil)
         self.presentViewController(newPlaceViewController, animated: true, completion: nil)
         
-    }
-    
-    func returnHome() {
-        // navigate back to home screen
     }
     
 }

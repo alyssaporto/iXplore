@@ -16,6 +16,7 @@
 		290774251D0EB74E00F3CFEF /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 290774231D0EB74E00F3CFEF /* LandingViewController.xib */; };
 		290774271D0EC56300F3CFEF /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290774261D0EC56300F3CFEF /* Place.swift */; };
 		290774491D0ED96600F3CFEF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 290774481D0ED96600F3CFEF /* MapKit.framework */; };
+		2926AF261D1277B000283C01 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926AF251D1277B000283C01 /* UserController.swift */; };
 		2953CC771D10402000954EDF /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CC751D10402000954EDF /* NewPlaceViewController.swift */; };
 		2953CC781D10402000954EDF /* NewPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2953CC761D10402000954EDF /* NewPlaceViewController.xib */; };
 		2953CC7B1D10469E00954EDF /* InitialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CC791D10469E00954EDF /* InitialScreenViewController.swift */; };
@@ -40,6 +41,7 @@
 		290774231D0EB74E00F3CFEF /* LandingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
 		290774261D0EC56300F3CFEF /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		290774481D0ED96600F3CFEF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2926AF251D1277B000283C01 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		2953CC751D10402000954EDF /* NewPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
 		2953CC761D10402000954EDF /* NewPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlaceViewController.xib; sourceTree = "<group>"; };
 		2953CC791D10469E00954EDF /* InitialScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		290773FE1D0EB60A00F3CFEF = {
 			isa = PBXGroup;
 			children = (
+				2926AF251D1277B000283C01 /* UserController.swift */,
 				290774481D0ED96600F3CFEF /* MapKit.framework */,
 				290774091D0EB60A00F3CFEF /* iXplore */,
 				290774081D0EB60A00F3CFEF /* Products */,
@@ -201,6 +204,7 @@
 				2907740B1D0EB60A00F3CFEF /* AppDelegate.swift in Sources */,
 				290774271D0EC56300F3CFEF /* Place.swift in Sources */,
 				2953CC811D1046DA00954EDF /* LoginViewController.swift in Sources */,
+				2926AF261D1277B000283C01 /* UserController.swift in Sources */,
 				290774241D0EB74E00F3CFEF /* LandingViewController.swift in Sources */,
 				2953CC891D106D5300954EDF /* PlacesController.swift in Sources */,
 				2953CC7B1D10469E00954EDF /* InitialScreenViewController.swift in Sources */,
