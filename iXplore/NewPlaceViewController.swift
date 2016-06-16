@@ -21,12 +21,16 @@ class NewPlaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let currentLocation = appDelegate.locationManager.location
-        let currentLatitude = appDelegate.locationManager.location!.coordinate.latitude
-        let currentLongitude = appDelegate.locationManager.location!.coordinate.longitude
-        latitudeField.text = String(currentLatitude)
-        longitudeField.text = String(currentLongitude)
+//        // Do any additional setup after loading the view.
+//        let currentLocation = appDelegate.locationManager!.location
+//        let currentLatitude = appDelegate.locationManager!.location!.coordinate.latitude
+//        let currentLongitude = appDelegate.locationManager!.location!.coordinate.longitude
+//        latitudeField.text = String(currentLatitude)
+//        longitudeField.text = String(currentLongitude)
+        let lat = appDelegate.currentLocation!.coordinate.latitude
+        let lon = appDelegate.currentLocation!.coordinate.longitude
+        self.latitudeField.text = String(lat)
+        self.longitudeField.text = String(lon)
     }
 
     override func didReceiveMemoryWarning() {

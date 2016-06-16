@@ -20,14 +20,13 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        print("\(appDelegate.locationManager.location)")
         //locationManager.startUpdatingLocation()
         PlacesController.sharedInstance.getPlaces()
         
         setupMapView()
         setupTableView()
         self.mapView.delegate = self
+        appDelegate.locationManager!.startUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,9 +165,9 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func openModal() {
-        print("hi \(appDelegate.locationManager.location)")
         let newPlaceViewController = NewPlaceViewController(nibName: "NewPlaceViewController", bundle: nil)
         self.presentViewController(newPlaceViewController, animated: true, completion: nil)
+        
     }
     
     func returnHome() {
