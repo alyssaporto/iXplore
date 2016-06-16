@@ -32,16 +32,21 @@ class PlacesController {
 
     }
     
-    private func readPlacesFromMemory() -> [Place] {
-        let places = PersistenceManager.loadNSArray("array") as! [Place]
-        return places
+    func readPlacesFromMemory() -> [Place] {
+        
+        if let places: [Place] = PersistenceManager.loadNSArray("array") as? [Place] {
+            return places
+        } else {
+            return []
+        }
+        
     }
  
     func getPlaces() -> [Place] {
         if placeArray.isEmpty {
             placeArray = readPlacesFromMemory()
             if placeArray.isEmpty {
-                placeArray = Place.placeList()
+                placeArray = []
             }
         }
         return placeArray

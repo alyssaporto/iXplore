@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  iXplore
 //
-//  Created by Ingrid Polk on 6/8/16.
-//  Copyright © 2016 KristinPolk. All rights reserved.
+//  Created by Alyssa Porto on 6/8/16.
+//  Copyright © 2016 Alyssa Porto. All rights reserved.
 //
 
 import UIKit
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = self.authenticationNavigationController
+        self.window?.rootViewController = self.loggedInNavigationController
         return true
     }
     

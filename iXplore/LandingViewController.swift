@@ -92,14 +92,13 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         let favoriteAction = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-            print(PlacesController.sharedInstance.placeArray[indexPath.row].favorite)
-            if PlacesController.sharedInstance.placeArray[indexPath.row].favorite {
-                PlacesController.sharedInstance.placeArray[indexPath.row].favorite = true
+            if PlacesController.sharedInstance.placeArray[indexPath.row].favorite == false {
                 self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
+                PlacesController.sharedInstance.placeArray[indexPath.row].favorite = true
                 self.mapView.addAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
             } else {
-                PlacesController.sharedInstance.placeArray[indexPath.row].favorite = false
                 self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
+                PlacesController.sharedInstance.placeArray[indexPath.row].favorite = false
                 self.mapView.addAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
             }
         }
