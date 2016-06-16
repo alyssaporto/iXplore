@@ -91,7 +91,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let action1 = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
+        let favoriteAction = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
             print(PlacesController.sharedInstance.placeArray[indexPath.row].favorite)
             if PlacesController.sharedInstance.placeArray[indexPath.row].favorite {
                 PlacesController.sharedInstance.placeArray[indexPath.row].favorite = true
@@ -103,27 +103,29 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.mapView.addAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
             }
         }
-        action1.backgroundColor = UIColor.orangeColor()
+        favoriteAction.backgroundColor = UIColor.orangeColor()
         
-        let action2 = UITableViewRowAction(style: .Normal, title: " Delete ") { action, index in
+        let deleteAction = UITableViewRowAction(style: .Normal, title: " Delete ") { action, index in
             
             let alertController = UIAlertController(title: "Are you sure you want to delete \(PlacesController.sharedInstance.placeArray[indexPath.row].title!)?", message: "You will no longer be able to access this location if you choose to", preferredStyle: .Alert)
             
-            let OKAction = UIAlertAction(title: "Delete", style: .Default) { (action) in
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in }
+            alertController.addAction(cancelButton)
+            
+            let deleteButton = UIAlertAction(title: "Delete", style: .Default) { (action) in
                 self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
                 PlacesController.sharedInstance.placeArray.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 PlacesController.sharedInstance.saveArray()
             }
-            alertController.addAction(OKAction)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in }
-            alertController.addAction(cancelAction)
+            alertController.addAction(deleteButton)
+
             self.presentViewController(alertController, animated: true) {}
         }
-        action2.backgroundColor = UIColor.redColor()
+        deleteAction.backgroundColor = UIColor.redColor()
         
         
-        return [action1, action2]
+        return [favoriteAction, deleteAction]
     }
 
     
