@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         currentLocation = CLLocation()
         
         let lvc = LandingViewController(nibName: "LandingViewController", bundle: nil)
-        //let lvc = LandingViewController(nibName: "LandingInViewController", bundle: nil)
         self.navigationController = UINavigationController(rootViewController: lvc)
         self.navigationController.navigationBarHidden = false
         

@@ -42,14 +42,14 @@ class Place: NSObject, MKAnnotation, NSCoding  {
             
         let title = aDecoder.decodeObjectForKey("title") as? String
         let date = aDecoder.decodeObjectForKey("date") as? NSDate
-        //let lat = aDecoder.decodeObjectForKey("lat") as! Double
-        //let long = aDecoder.decodeObjectForKey("long") as! Double
+        // let lat = aDecoder.decodeObjectForKey("lat") as! Double
+        // let long = aDecoder.decodeObjectForKey("long") as! Double
         let placeDescription = aDecoder.decodeObjectForKey("placeDescription") as? String
-        // let favorite = aDecoder.decodeObjectForKey("favorite") as? Bool
+        let favorite = aDecoder.decodeObjectForKey("favorite") as? Bool
         
         var decodeCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
-        //decodeCoordinate.latitude = lat as CLLocationDegrees
-        //decodeCoordinate.longitude = long as CLLocationDegrees
+        // decodeCoordinate.latitude = lat as CLLocationDegrees
+        // decodeCoordinate.longitude = long as CLLocationDegrees
         
         self.init(coordinate: decodeCoordinate, title: title!, placeDescription: placeDescription!, date: date!, favorite: false)
 

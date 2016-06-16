@@ -33,21 +33,15 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
     }
     
-        //        if shouldIAllow {
-        //            NSLog("Location to Allowed")
-        //            //Start location services
-        //            self.locationManager?.startUpdatingLocation()
-        //        }
-    
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let location = locations.last
-//        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-//        let lvc = LandingViewController(nibName: "LandingViewController", bundle: nil)
-//        lvc.mapView.setRegion(region, animated: true)
-//        appDelegate.locationManager.stopUpdatingLocation()
-//        lvc.mapView.showsUserLocation = true
-//    }
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let lvc = LandingViewController(nibName: "LandingViewController", bundle: nil)
+        lvc.mapView.setRegion(region, animated: true)
+        appDelegate.locationManager!.stopUpdatingLocation()
+        lvc.mapView.showsUserLocation = true
+    }
     
     func setupMapView() {
         mapView.mapType = .Hybrid

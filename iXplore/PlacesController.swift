@@ -33,8 +33,7 @@ class PlacesController {
     }
     
     private func readPlacesFromMemory() -> [Place] {
-        let places = Place.placeList()
-        //PersistenceManager.loadNSArray("array") as! [Place]
+        let places = PersistenceManager.loadNSArray("array") as! [Place]
         return places
     }
  
