@@ -96,10 +96,12 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
                 PlacesController.sharedInstance.placeArray[indexPath.row].favorite = true
                 self.mapView.addAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
+                PlacesController.sharedInstance.saveArray()
             } else {
                 self.mapView.removeAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
                 PlacesController.sharedInstance.placeArray[indexPath.row].favorite = false
                 self.mapView.addAnnotation(PlacesController.sharedInstance.placeArray[indexPath.row])
+                PlacesController.sharedInstance.saveArray()
             }
         }
         favoriteAction.backgroundColor = UIColor.orangeColor()

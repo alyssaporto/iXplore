@@ -16,7 +16,7 @@ class Place: NSObject, MKAnnotation, NSCoding  {
     var imageURL: String? = ""
     var placeDescription: String? = ""
     var date: NSDate?
-    var favorite:Bool = false
+    var favorite:Bool
     
     required init(coordinate: CLLocationCoordinate2D, title: String, placeDescription: String, date: NSDate, favorite: Bool) {
         self.coordinate = coordinate
@@ -35,6 +35,7 @@ class Place: NSObject, MKAnnotation, NSCoding  {
 //        aCoder.encodeObject(self.imageURL, forKey: "imageURL")
         aCoder.encodeObject(self.placeDescription, forKey: "placeDescription")
         aCoder.encodeObject(self.date, forKey: "date")
+        print(self.favorite)
         aCoder.encodeObject(self.favorite, forKey: "favorite")
 
     }
@@ -47,14 +48,13 @@ class Place: NSObject, MKAnnotation, NSCoding  {
         let placeDescription = aDecoder.decodeObjectForKey("placeDescription") as? String
         let date = aDecoder.decodeObjectForKey("date") as? NSDate
         let favorite = aDecoder.decodeObjectForKey("favorite") as? Bool
-        
-        print(latitude)
+        print(favorite)
         
         var decodeCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
         decodeCoordinate.latitude = latitude! as CLLocationDegrees
         decodeCoordinate.longitude = longitude! as CLLocationDegrees
         
-        self.init(coordinate: decodeCoordinate, title: title!, placeDescription: placeDescription!, date: date!, favorite: false)
+        self.init(coordinate: decodeCoordinate, title: title!, placeDescription: placeDescription!, date: date!, favorite: favorite!)
 
     }
     
